@@ -22,7 +22,7 @@ public class Ground : MonoBehaviour
     private void Update()
     {
         if (_camera == null) return;
-        if (!(Math.Abs(_camera.transform.position.x - _groundNex.transform.position.x) < 0.01f)) return;
+        if (!(Math.Abs(_camera.transform.position.x - _groundNex.transform.position.x) < 0.1f)) return;
             
         var gSizeW = _groundNex.GetComponent<BoxCollider2D>().bounds.size.x;
         _groundPrv.transform.position = new Vector2(_groundNex.transform.position.x + gSizeW , _groundPrv.transform.position.y);
