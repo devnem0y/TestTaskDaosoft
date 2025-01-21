@@ -561,6 +561,7 @@ GameObject:
   - component: {fileID: 1157437176}
   - component: {fileID: 1157437179}
   - component: {fileID: 1157437180}
+  - component: {fileID: 1157437182}
   - component: {fileID: 1157437181}
   m_Layer: 6
   m_Name: Hero
@@ -732,6 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 1157437178}
+  _clickManager: {fileID: 1157437182}
   _runSpeed: 40
   _horizontalMove: 0
 --- !u!114 &1157437181
@@ -773,6 +775,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1519936567}
+--- !u!114 &1157437182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157437173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ad44cf54aa628419ad351dc6bb9121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1249701321
 GameObject:
   m_ObjectHideFlags: 0

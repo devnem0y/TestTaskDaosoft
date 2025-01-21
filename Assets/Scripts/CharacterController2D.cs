@@ -4,11 +4,12 @@ public class CharacterController2D : MonoBehaviour
 {
 	const float GROUNDED_RADIUS = 0.2f;
 	
-	[SerializeField] private float _jumpForce = 400f;							
-	[Range(0, .3f)] [SerializeField] private float _movementSmoothing = .05f;	
+	[Range(0, 0.3f)] [SerializeField] private float _movementSmoothing = 0.05f;	
 	[SerializeField] private bool _airControl;							
 	[SerializeField] private LayerMask _whatIsGround;							
-	[SerializeField] private Transform m_GroundCheck;							
+	[SerializeField] private Transform m_GroundCheck;
+	
+	public float JumpForce { get; set; }
 
 	private bool _isGrounded;
 	private Rigidbody2D _rb;
@@ -39,9 +40,9 @@ public class CharacterController2D : MonoBehaviour
 			Vector3 targetVelocity = new Vector2(move * 10f, velocity.y);
 			_rb.velocity = Vector3.SmoothDamp(velocity, targetVelocity, ref _velocity, _movementSmoothing);
 		}
-
+		
 		if (!_isGrounded || !jump) return;
 		_isGrounded = false;
-		_rb.AddForce(new Vector2(0f, _jumpForce));
+		_rb.AddForce(new Vector2(0f, JumpForce));
 	}
 }
