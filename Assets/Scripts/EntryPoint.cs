@@ -1,4 +1,7 @@
+using System;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UralHedgehog.UI;
 
 public class EntryPoint : MonoBehaviour
@@ -14,19 +17,41 @@ public class EntryPoint : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        _uiManager = new UIManager(FindObjectOfType<UIRoot>());
+        
+        _uiManager.OpenViewTopPanel();
+    }
+
     private void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.Escape)) return;
-        
-        if (IsGamePaused)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 1;
-            IsGamePaused = false;
+            if (IsGamePaused)
+            {
+                Time.timeScale = 1;
+                IsGamePaused = false;
+            }
+            else
+            {
+                Time.timeScale = 0;
+                IsGamePaused = true;
+            }
         }
-        else
+        
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            Time.timeScale = 0;
-            IsGamePaused = true;
+            #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+            #endif
+            
+            Application.Quit();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

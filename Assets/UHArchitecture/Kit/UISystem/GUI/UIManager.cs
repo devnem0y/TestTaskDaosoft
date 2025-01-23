@@ -29,6 +29,11 @@
             {
                 _uiRoot.Create<IEmptyWidget>(nameof(WExampleEmpty), null);
             }
+            
+            public void OpenViewTopPanel()
+            {
+                _uiRoot.Create<IEmptyWidget>(nameof(PTopPanel), null);
+            }
 
             #endregion
 
