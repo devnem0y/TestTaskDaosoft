@@ -1,18 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UralHedgehog.UI;
 
 public class EntryPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static EntryPoint Instance { get; private set;}
+    
+    public bool IsGamePaused { get; private set; }
+    
+    private UIManager _uiManager;
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (!Input.GetKeyDown(KeyCode.Escape)) return;
         
+        if (IsGamePaused)
+        {
+            Time.timeScale = 1;
+            IsGamePaused = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            IsGamePaused = true;
+        }
     }
 }
