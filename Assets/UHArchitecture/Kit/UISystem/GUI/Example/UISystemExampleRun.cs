@@ -26,7 +26,7 @@ public class UISystemExampleRun : MonoBehaviour
         UIManager = new UIManager(FindObjectOfType<UIRoot>());
         
         var example = new Example();
-        UIManager.OpenViewExample(example);
+        //UIManager.OpenViewExample(example);
         
         _screenTransition.Show();
     }
@@ -36,7 +36,7 @@ public class UISystemExampleRun : MonoBehaviour
         //TODO: Принудительное уничтожение виджета
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            UIManager.CloseViewExample();
+            //UIManager.CloseViewExample();
         }
     }
 }

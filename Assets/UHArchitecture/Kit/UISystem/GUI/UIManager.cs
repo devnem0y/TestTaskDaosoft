@@ -12,27 +12,10 @@
             }
 
             #region Open
-
-            /// <summary>
-            /// Поднимает виджет с моделью IExample
-            /// </summary>
-            public void OpenViewExample(IExample example)
-            {
-                _uiRoot.Create(nameof(WExample), example);
-            }
-            
-            /// <summary>
-            /// Поднимает пустой виджет (без модели)
-            /// Для этого используем данную конструкцию (IEmptyWidget, модель null)
-            /// </summary>
-            public void OpenViewExampleEmpty()
-            {
-                _uiRoot.Create<IEmptyWidget>(nameof(WExampleEmpty), null);
-            }
             
             public void OpenViewTopPanel()
             {
-                _uiRoot.Create<IEmptyWidget>(nameof(PTopPanel), null);
+                _uiRoot.Create<Config>(nameof(PTopPanel), EntryPoint.Instance.Config);
             }
 
             #endregion
@@ -41,13 +24,7 @@
             //TODO: Его можно закрыть и уничтожить из любого места.
             #region Close
 
-            /// <summary>
-            /// Уничтожает виджет с моделью IExample
-            /// </summary>
-            public void CloseViewExample()
-            {
-                _uiRoot.Kill(nameof(WExample));
-            }
+            
 
             #endregion
         }

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlatformGenerator : MonoBehaviour
 {
+    private const int MAX_COUNT = 10000;
+    
     [SerializeField] private GameObject _platform;
     
     [SerializeField] private float _minY;
@@ -14,7 +16,7 @@ public class PlatformGenerator : MonoBehaviour
 
     private void Start()
     {
-        for (var i = 0; i < 200; i++) Create();
+        for (var i = 0; i < MAX_COUNT; i++) Create();
     }
 
     private void Create()

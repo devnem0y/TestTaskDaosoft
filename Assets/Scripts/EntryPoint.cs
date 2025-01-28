@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ public class EntryPoint : MonoBehaviour
     public static EntryPoint Instance { get; private set;}
     
     public bool IsGamePaused { get; private set; }
+    public event Action<bool> OnGamePaused;
     
     //TODO: Не самый лучший подход, чтобы доставать его по инстанцу, но для тестового задания пойдет
     [SerializeField] private Config _config;
@@ -35,11 +37,13 @@ public class EntryPoint : MonoBehaviour
             {
                 Time.timeScale = 1;
                 IsGamePaused = false;
+                OnGamePaused?.Invoke(IsGamePaused);
             }
             else
             {
                 Time.timeScale = 0;
                 IsGamePaused = true;
+                OnGamePaused?.Invoke(IsGamePaused);
             }
         }
         
@@ -54,6 +58,10 @@ public class EntryPoint : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            Time.timeScale = 1;
+            IsGamePaused = false;
+            OnGamePaused?.Invoke(IsGamePaused);
+            
             SceneManager.LoadScene(0);
         }
     }

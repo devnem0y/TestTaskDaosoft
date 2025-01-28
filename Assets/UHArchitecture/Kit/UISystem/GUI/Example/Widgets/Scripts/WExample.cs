@@ -21,7 +21,7 @@ namespace UralHedgehog
 
             _btnOpenExampleEmpty.onClick.AddListener(() =>
             {
-                UISystemExampleRun.Instance.UIManager.OpenViewExampleEmpty();
+                //UISystemExampleRun.Instance.UIManager.OpenViewExampleEmpty();
                 Hide();
             });
         }
